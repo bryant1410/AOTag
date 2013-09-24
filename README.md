@@ -4,7 +4,7 @@ AOTag is under MIT Licence so if you find it helpful just use it !
 
 ###**AOTagDemo**
 
-This project add/remove tag with image and title inside a tag list view. When user tap on a tag, it removed from the view. Please see the sample project for more.
+This project add/remove tag with image and title inside a tag list view. When user tap on a tag, it's removed from the view. Please see the sample project for more.
 
 ###**Screenshot:**
 AOTagDemo in the iphone simulator
