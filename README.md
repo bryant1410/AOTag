@@ -42,4 +42,4 @@ Any comments are welcomed
 @Appsido
 contact@appsido.com
 
- [1]:http://public.appsido.com/iPhone/public/AOTag/AOTagScreen.pn
+ [1]:http://public.appsido.com/iPhone/public/AOTag/AOTagScreen.png
