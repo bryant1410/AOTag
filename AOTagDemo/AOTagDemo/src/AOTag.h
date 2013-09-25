@@ -27,9 +27,20 @@
 
 @class AOTag;
 
+@protocol AOTagDelegate <NSObject>
+
+@optional
+- (void)tagDidAddTag:(AOTag *)tag;
+- (void)tagDidRemoveTag:(AOTag *)tag;
+- (void)tagDidSelectTag:(AOTag *)tag;
+
+@end
+
 @interface AOTagList : UIView
 
-@property (nonatomic, retain) NSMutableArray *tags;
+@property (nonatomic, weak) id <AOTagDelegate> delegate;
+
+@property (nonatomic, strong) NSMutableArray *tags;
 
 /**
  * Create a new tag object
@@ -73,11 +84,13 @@
 
 @interface AOTag : UIView
 
-@property (nonatomic, retain) UIColor *tLabelColor;
-@property (nonatomic, retain) UIColor *tBackgroundColor;
-@property (nonatomic, retain) UIColor *tCloseButtonColor;
+@property (nonatomic, weak) id <AOTagDelegate> delegate;
 
-@property (nonatomic, retain) UIImage *tImage;
+@property (nonatomic, strong) UIColor *tLabelColor;
+@property (nonatomic, strong) UIColor *tBackgroundColor;
+@property (nonatomic, strong) UIColor *tCloseButtonColor;
+
+@property (nonatomic, strong) UIImage *tImage;
 @property (nonatomic, copy) NSString *tTitle;
 
 /**
@@ -86,5 +99,13 @@
  * @return return a tag object CGSize size
  */
 - (CGSize)getTagSize;
+
+@end
+
+@interface AOTagCloseButton : UIView
+
+@property (nonatomic, strong) UIColor *cColor;
+
+- (id)initWithFrame:(CGRect)frame withColor:(UIColor *)color;
 
 @end

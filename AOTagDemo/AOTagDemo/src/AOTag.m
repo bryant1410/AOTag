@@ -79,6 +79,7 @@
 {
     AOTag *tag = [[AOTag alloc] initWithFrame:CGRectZero];
     
+    [tag setDelegate:self.delegate];
     [tag setTImage:[UIImage imageNamed:tImage]];
     [tag setTTitle:tTitle];
     
@@ -171,36 +172,78 @@ withCloseButtonColor:(UIColor *)closeColor
     [self.tTitle drawInRect:CGRectMake(tagHeight + tagMargin, ([self getTagSize].height / 2.0f) - (tSize.height / 2.0f), tSize.width, tSize.height)
              withAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize], NSForegroundColorAttributeName:self.tLabelColor}];
     
-    [self drawClose:rect];
+    AOTagCloseButton *close = [[AOTagCloseButton alloc] initWithFrame:CGRectMake([self getTagSize].width - tagHeight, 0.0, tagHeight, tagHeight)
+                                                            withColor:self.tCloseButtonColor];
+    [self addSubview:close];
     
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagSelected:)];
     [recognizer setNumberOfTapsRequired:1];
     [recognizer setNumberOfTouchesRequired:1];
     [self addGestureRecognizer:recognizer];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tagDidAddTag:)])
+        [self.delegate performSelector:@selector(tagDidAddTag:) withObject:self];
 }
 
-- (void)drawClose:(CGRect)rect
+- (void)tagSelected:(id)sender
 {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tagDidSelectTag:)])
+        [self.delegate performSelector:@selector(tagDidSelectTag:) withObject:self];
+}
+
+- (void)tagClose:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tagDidRemoveTag:)])
+        [self.delegate performSelector:@selector(tagDidRemoveTag:) withObject:self];
+    
+    [(AOTagList *)[self superview] removeTag:self];
+}
+
+@end
+
+@implementation AOTagCloseButton
+
+- (id)initWithFrame:(CGRect)frame withColor:(UIColor *)color
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        [self setBackgroundColor:[UIColor clearColor]];
+        [self setUserInteractionEnabled:YES];
+        
+        [self setCColor:color];
+    }
+    return self;
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+    
     UIBezierPath *bezierPath = [UIBezierPath bezierPath];
     [bezierPath moveToPoint:CGPointMake(rect.size.width - tagCloseButton + 1.0, (rect.size.height - tagCloseButton) / 2.0)];
     [bezierPath addLineToPoint:CGPointMake(rect.size.width - (tagCloseButton * 2.0) + 1.0, ((rect.size.height - tagCloseButton) / 2.0) + tagCloseButton)];
-    [self.tCloseButtonColor setStroke];
+    [self.cColor setStroke];
     bezierPath.lineWidth = 2.0;
     [bezierPath stroke];
     
     UIBezierPath *bezier2Path = [UIBezierPath bezierPath];
     [bezier2Path moveToPoint:CGPointMake(rect.size.width - tagCloseButton + 1.0, ((rect.size.height - tagCloseButton) / 2.0) + tagCloseButton)];
     [bezier2Path addLineToPoint:CGPointMake(rect.size.width - (tagCloseButton * 2.0) + 1.0, (rect.size.height - tagCloseButton) / 2.0)];
-    [self.tCloseButtonColor setStroke];
+    [self.cColor setStroke];
     bezier2Path.lineWidth = 2.0;
     [bezier2Path stroke];
+    
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagClose:)];
+    [recognizer setNumberOfTapsRequired:1];
+    [recognizer setNumberOfTouchesRequired:1];
+    [self addGestureRecognizer:recognizer];
 }
 
-- (void)tagSelected:(id)sender
+- (void)tagClose:(id)sender
 {
-    NSLog(@"Tag > %@ has been selected", self);
-    
-    [(AOTagList *)[self superview] removeTag:self];
+    if ([[self superview] respondsToSelector:@selector(tagClose:)])
+        [[self superview] performSelector:@selector(tagClose:) withObject:self];
 }
 
 @end

@@ -24,7 +24,8 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import "AOTag.h"
 
-@interface AOViewController : UIViewController
+@interface AOViewController : UIViewController <AOTagDelegate>
 
 @end

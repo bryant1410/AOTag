@@ -18,6 +18,16 @@ Sample project show a simple usage.
 ###Documentation
 
 ```objc
+
+@protocol AOTagDelegate <NSObject>
+
+@optional
+- (void)tagDidAddTag:(AOTag *)tag;
+- (void)tagDidRemoveTag:(AOTag *)tag;
+- (void)tagDidSelectTag:(AOTag *)tag;
+
+@end
+
 /**
  * Create a new tag object
  *

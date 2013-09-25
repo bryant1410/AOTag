@@ -55,6 +55,7 @@
                                                            320.0f,
                                                            300.0f)];
     
+    [self.tag setDelegate:self];
     [self.view addSubview:self.tag];
 }
 
@@ -140,6 +141,23 @@
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     [self resetRandomTagsName];
+}
+
+#pragma mark - Tag delegate
+
+- (void)tagDidAddTag:(AOTag *)tag
+{
+    NSLog(@"Tag > %@ has been added", tag);
+}
+
+- (void)tagDidRemoveTag:(AOTag *)tag
+{
+    NSLog(@"Tag > %@ has been removed", tag);
+}
+
+- (void)tagDidSelectTag:(AOTag *)tag
+{
+    NSLog(@"Tag > %@ has been selected", tag);
 }
 
 @end
