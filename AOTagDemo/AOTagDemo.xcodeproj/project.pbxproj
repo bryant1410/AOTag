@@ -38,6 +38,7 @@
 		F3C69A9917F1BA0900222259 /* sansa@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3C69A8917F1BA0900222259 /* sansa@2x.jpg */; };
 		F3C69A9A17F1BA0900222259 /* tyrion.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3C69A8A17F1BA0900222259 /* tyrion.jpg */; };
 		F3C69A9B17F1BA0900222259 /* tyrion@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3C69A8B17F1BA0900222259 /* tyrion@2x.jpg */; };
+		F3F3F91117F2E4F400A1098D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F3F3F91017F2E4F400A1098D /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		F3C69A8917F1BA0900222259 /* sansa@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sansa@2x.jpg"; sourceTree = "<group>"; };
 		F3C69A8A17F1BA0900222259 /* tyrion.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tyrion.jpg; sourceTree = "<group>"; };
 		F3C69A8B17F1BA0900222259 /* tyrion@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tyrion@2x.jpg"; sourceTree = "<group>"; };
+		F3F3F91017F2E4F400A1098D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		F3C69A2417F1A78400222259 = {
 			isa = PBXGroup;
 			children = (
+				F3F3F91017F2E4F400A1098D /* README.md */,
 				F3C69A3617F1A78400222259 /* AOTagDemo */,
 				F3C69A4F17F1A78500222259 /* AOTagDemoTests */,
 				F3C69A2F17F1A78400222259 /* Frameworks */,
@@ -291,6 +294,7 @@
 			files = (
 				F3C69A9117F1BA0900222259 /* cersei@2x.jpg in Resources */,
 				F3C69A9917F1BA0900222259 /* sansa@2x.jpg in Resources */,
+				F3F3F91117F2E4F400A1098D /* README.md in Resources */,
 				F3C69A9B17F1BA0900222259 /* tyrion@2x.jpg in Resources */,
 				F3C69A8C17F1BA0900222259 /* arya.jpg in Resources */,
 				F3C69A8F17F1BA0900222259 /* catherine@2x.jpg in Resources */,
@@ -530,6 +534,7 @@
 				F3C69A5B17F1A78500222259 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F3C69A5C17F1A78500222259 /* Build configuration list for PBXNativeTarget "AOTagDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +543,7 @@
 				F3C69A5E17F1A78500222259 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

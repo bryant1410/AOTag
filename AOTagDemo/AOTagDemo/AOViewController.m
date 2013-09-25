@@ -49,9 +49,7 @@
 
 - (void)resetRandomTagsName
 {
-    for (id t in [self.tag subviews])
-        if ([t isKindOfClass:[AOTag class]])
-            [self.tag removeTag:t];
+    [self.tag removeAllTag];
     
     self.randomTag = [NSMutableArray arrayWithArray:@[@{@"title": @"Tyrion", @"image": @"tyrion.jpg"}, @{@"title": @"Jaime", @"image": @"jaime.jpg"}, @{@"title": @"Robert", @"image": @"robert.jpg"}, @{@"title": @"Sansa", @"image": @"sansa.jpg"}, @{@"title": @"Arya", @"image": @"arya.jpg"}, @{@"title": @"Jon", @"image": @"john.jpg"}, @{@"title": @"Catelyn", @"image": @"catherine.jpg"}, @{@"title": @"Cersei", @"image": @"cersei.jpg"}]];
 }
@@ -62,7 +60,7 @@
     {
         NSInteger index = arc4random() % [self.randomTag count];
         
-        [self.tag addTag:[[self.randomTag objectAtIndex:index] valueForKey:@"title"] withImage:[UIImage imageNamed:[[self.randomTag objectAtIndex:index] valueForKey:@"image"]]];
+        [self.tag addTag:[[self.randomTag objectAtIndex:index] valueForKey:@"title"] withImage:[[self.randomTag objectAtIndex:index] valueForKey:@"image"]];
         [self.randomTag removeObjectAtIndex:index];
     }
     else
@@ -75,6 +73,20 @@
         [alert show];
     }
     
+}
+
+- (IBAction)addAllTag:(id)sender
+{
+    [self resetRandomTagsName];
+    
+    [self.tag addTags:self.randomTag];
+    
+    [self.randomTag removeAllObjects];
+}
+
+- (IBAction)removeAllTag:(id)sender
+{
+    [self resetRandomTagsName];
 }
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex

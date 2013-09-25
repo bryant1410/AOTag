@@ -40,20 +40,15 @@
         if ([v isKindOfClass:[AOTag class]])
             [v removeFromSuperview];
     
-    for (NSDictionary *obj in self.tags)
+    for (AOTag *tag in self.tags)
     {
-        AOTag *t = [[AOTag alloc] initWithFrame:CGRectZero];
-        
-        [t setTImage:[obj valueForKey:@"image"]];
-        [t setTTitle:[obj valueForKey:@"title"]];
-        
-        if (x + [t getTagSize].width + tagMargin > self.frame.size.width) { n = 0; x = 40.0; y += [t getTagSize].height + tagMargin; }
+        if (x + [tag getTagSize].width + tagMargin > self.frame.size.width) { n = 0; x = 40.0; y += [tag getTagSize].height + tagMargin; }
         else x += (n ? tagMargin : 0.0f);
         
-        [t setFrame:CGRectMake(x, y, [t getTagSize].width, [t getTagSize].height)];
-        [self addSubview:t];
+        [tag setFrame:CGRectMake(x, y, [tag getTagSize].width, [tag getTagSize].height)];
+        [self addSubview:tag];
         
-        x += [t getTagSize].width;
+        x += [tag getTagSize].width;
         
         n++;
     }
@@ -63,18 +58,35 @@
     [self setFrame:r];
 }
 
-- (void)addTag:(NSString *)tTitle withImage:(UIImage *)tImage
+- (void)addTag:(NSString *)tTitle withImage:(NSString *)tImage
 {
-    [self.tags addObject:@{@"title": tTitle, @"image": tImage}];
+    AOTag *t = [[AOTag alloc] initWithFrame:CGRectZero];
+    
+    [t setTImage:[UIImage imageNamed:tImage]];
+    [t setTTitle:tTitle];
+    
+    [self.tags addObject:t];
     
     [self setNeedsDisplay];
 }
 
+- (void)addTags:(NSArray *)tags
+{
+    for (NSDictionary *tag in tags)
+        [self addTag:[tag objectForKey:@"title"] withImage:[tag objectForKey:@"image"]];
+}
+
 - (void)removeTag:(AOTag *)tag
 {
-    [self.tags removeObject:@{@"title": [tag tTitle], @"image": [tag tImage]}];
+    [self.tags removeObject:tag];
     
     [self setNeedsDisplay];
+}
+
+- (void)removeAllTag
+{
+    for (id t in [NSArray arrayWithArray:[self tags]])
+        [self removeTag:t];
 }
 
 @end

@@ -14,8 +14,32 @@
 
 @property (nonatomic, retain) NSMutableArray *tags;
 
-- (void)addTag:(NSString *)tTitle withImage:(UIImage *)tImage;
+/**
+ * Create a new tag object
+ *
+ * @param tTitle the NSString tag label
+ * @param tImage the NSString tag image named
+ */
+- (void)addTag:(NSString *)tTitle withImage:(NSString *)tImage;
+
+/**
+ * Create a new tags object and add them to the tag list view.
+ *
+ * @param tags the NSArray tag list to be added. The given tag must be of NSDictionary type (ie. @{@"title": @"Tyrion", @"image": @"tyrion.jpg"})
+ */
+- (void)addTags:(NSArray *)tags;
+
+/**
+ * Remove the given tag from the tag list view
+ *
+ * @param tag the AOTag instance to be removed
+ */
 - (void)removeTag:(AOTag *)tag;
+
+/**
+ * Remove all tags object
+ */
+- (void)removeAllTag;
 
 @end
 
@@ -24,6 +48,12 @@
 @property (nonatomic, retain) UIImage *tImage;
 @property (nonatomic, copy) NSString *tTitle;
 
+/**
+ * Returns an NSString representation of the object's persistent store primary key
+ *
+ * @param anObjectID the NSManagedObjectID instance to transform
+ * @return an NSString
+ */
 - (CGSize)getTagSize;
 
 @end
