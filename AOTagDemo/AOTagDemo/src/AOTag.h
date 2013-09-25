@@ -40,6 +40,17 @@
 - (void)addTag:(NSString *)tTitle withImage:(NSString *)tImage;
 
 /**
+ * Create a new tag object with custom colors
+ *
+ * @param tTitle the NSString tag label
+ * @param tImage the NSString tag image named
+ * @param labelColor the UIColor tag label color. Default color is [UIColor whiteColor]
+ * @param backgroundColor the UIColor tag background color. Default color is [UIColor colorWithRed:0.204 green:0.588 blue:0.855 alpha:1.000]
+ * @param closeColor the UIColor tag close button color. Default color is [UIColor colorWithRed:0.710 green:0.867 blue:0.953 alpha:1.000]
+ */
+- (void)addTag:(NSString *)tTitle withImage:(NSString *)tImage withLabelColor:(UIColor *)labelColor withBackgroundColor:(UIColor *)backgroundColor withCloseButtonColor:(UIColor *)closeColor;
+
+/**
  * Create a new tags object and add them to the tag list view.
  *
  * @param tags the NSArray tag list to be added. The given tag must be of NSDictionary type (ie. @{@"title": @"Tyrion", @"image": @"tyrion.jpg"})
@@ -62,6 +73,10 @@
 
 @interface AOTag : UIView
 
+@property (nonatomic, retain) UIColor *tLabelColor;
+@property (nonatomic, retain) UIColor *tBackgroundColor;
+@property (nonatomic, retain) UIColor *tCloseButtonColor;
+
 @property (nonatomic, retain) UIImage *tImage;
 @property (nonatomic, copy) NSString *tTitle;
 
@@ -73,4 +88,3 @@
 - (CGSize)getTagSize;
 
 @end
-

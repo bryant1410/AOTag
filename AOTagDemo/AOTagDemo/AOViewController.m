@@ -71,11 +71,16 @@
     self.randomTag = [NSMutableArray arrayWithArray:@[@{@"title": @"Tyrion", @"image": @"tyrion.jpg"}, @{@"title": @"Jaime", @"image": @"jaime.jpg"}, @{@"title": @"Robert", @"image": @"robert.jpg"}, @{@"title": @"Sansa", @"image": @"sansa.jpg"}, @{@"title": @"Arya", @"image": @"arya.jpg"}, @{@"title": @"Jon", @"image": @"john.jpg"}, @{@"title": @"Catelyn", @"image": @"catherine.jpg"}, @{@"title": @"Cersei", @"image": @"cersei.jpg"}]];
 }
 
+- (NSUInteger)getRandomTagIndex
+{
+    return arc4random() % [self.randomTag count];
+}
+
 - (IBAction)addRandomTag:(id)sender
 {
     if ([self.randomTag count])
     {
-        NSInteger index = arc4random() % [self.randomTag count];
+        NSInteger index = [self getRandomTagIndex];
         
         [self.tag addTag:[[self.randomTag objectAtIndex:index] valueForKey:@"title"] withImage:[[self.randomTag objectAtIndex:index] valueForKey:@"image"]];
         [self.randomTag removeObjectAtIndex:index];
@@ -89,7 +94,33 @@
                                               otherButtonTitles:nil];
         [alert show];
     }
+}
+
+- (IBAction)addCustomColorTag:(id)sender
+{
+    NSArray *colors = @[[UIColor redColor], [UIColor orangeColor], [UIColor purpleColor], [UIColor greenColor], [UIColor yellowColor]];
     
+    if ([self.randomTag count])
+    {
+        NSInteger index = [self getRandomTagIndex];
+        
+        [self.tag addTag:[[self.randomTag objectAtIndex:index] valueForKey:@"title"]
+               withImage:[[self.randomTag objectAtIndex:index] valueForKey:@"image"]
+          withLabelColor:[UIColor blackColor]
+     withBackgroundColor:[colors objectAtIndex:arc4random() % [colors count]]
+    withCloseButtonColor:[UIColor whiteColor]];
+        
+        [self.randomTag removeObjectAtIndex:index];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Information"
+                                                        message:@"No more random data to be used !"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Reset"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (IBAction)addAllTag:(id)sender

@@ -75,14 +75,36 @@
     [self setFrame:r];
 }
 
+- (AOTag *)generateTagWithLabel:(NSString *)tTitle withImage:(NSString *)tImage
+{
+    AOTag *tag = [[AOTag alloc] initWithFrame:CGRectZero];
+    
+    [tag setTImage:[UIImage imageNamed:tImage]];
+    [tag setTTitle:tTitle];
+    
+    [self.tags addObject:tag];
+    
+    return tag;
+}
+
 - (void)addTag:(NSString *)tTitle withImage:(NSString *)tImage
 {
-    AOTag *t = [[AOTag alloc] initWithFrame:CGRectZero];
+    [self generateTagWithLabel:tTitle withImage:tImage];
     
-    [t setTImage:[UIImage imageNamed:tImage]];
-    [t setTTitle:tTitle];
+    [self setNeedsDisplay];
+}
+
+- (void)addTag:(NSString *)tTitle
+     withImage:(NSString *)tImage
+withLabelColor:(UIColor *)labelColor
+withBackgroundColor:(UIColor *)backgroundColor
+withCloseButtonColor:(UIColor *)closeColor
+{
+    AOTag *tag = [self generateTagWithLabel:tTitle withImage:tImage];
     
-    [self.tags addObject:t];
+    if (labelColor) [tag setTLabelColor:labelColor];
+    if (backgroundColor) [tag setTBackgroundColor:backgroundColor];
+    if (closeColor) [tag setTCloseButtonColor:closeColor];
     
     [self setNeedsDisplay];
 }
@@ -113,13 +135,18 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
+    if (self)
+    {
+        self.tBackgroundColor = [UIColor colorWithRed:0.204 green:0.588 blue:0.855 alpha:1.000];
+        self.tLabelColor = [UIColor whiteColor];
+        self.tCloseButtonColor = [UIColor colorWithRed:0.710 green:0.867 blue:0.953 alpha:1.000];
         
-        [self setBackgroundColor:[UIColor colorWithRed:0.204 green:0.588 blue:0.855 alpha:1.000]];
+        [self setBackgroundColor:[UIColor clearColor]];
         [self setUserInteractionEnabled:YES];
         
         [[self layer] setCornerRadius:tagCornerRadius];
         [[self layer] setMasksToBounds:YES];
+        
     }
     return self;
 }
@@ -135,12 +162,14 @@
 {
     [super drawRect:rect];
     
+    self.layer.backgroundColor = [self.tBackgroundColor CGColor];
+    
     [self.tImage drawInRect:CGRectMake(0.0f, 0.0f, [self getTagSize].height, [self getTagSize].height)];
     
     CGSize tSize = [self.tTitle sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize]}];
     
     [self.tTitle drawInRect:CGRectMake(tagHeight + tagMargin, ([self getTagSize].height / 2.0f) - (tSize.height / 2.0f), tSize.width, tSize.height)
-             withAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize], NSForegroundColorAttributeName:[UIColor whiteColor]}];
+             withAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize], NSForegroundColorAttributeName:self.tLabelColor}];
     
     [self drawClose:rect];
     
@@ -152,25 +181,25 @@
 
 - (void)drawClose:(CGRect)rect
 {
-    UIColor *color = [UIColor colorWithRed:0.710 green:0.867 blue:0.953 alpha:1.000];
-    
     UIBezierPath *bezierPath = [UIBezierPath bezierPath];
     [bezierPath moveToPoint:CGPointMake(rect.size.width - tagCloseButton + 1.0, (rect.size.height - tagCloseButton) / 2.0)];
     [bezierPath addLineToPoint:CGPointMake(rect.size.width - (tagCloseButton * 2.0) + 1.0, ((rect.size.height - tagCloseButton) / 2.0) + tagCloseButton)];
-    [color setStroke];
+    [self.tCloseButtonColor setStroke];
     bezierPath.lineWidth = 2.0;
     [bezierPath stroke];
     
     UIBezierPath *bezier2Path = [UIBezierPath bezierPath];
     [bezier2Path moveToPoint:CGPointMake(rect.size.width - tagCloseButton + 1.0, ((rect.size.height - tagCloseButton) / 2.0) + tagCloseButton)];
     [bezier2Path addLineToPoint:CGPointMake(rect.size.width - (tagCloseButton * 2.0) + 1.0, (rect.size.height - tagCloseButton) / 2.0)];
-    [color setStroke];
+    [self.tCloseButtonColor setStroke];
     bezier2Path.lineWidth = 2.0;
     [bezier2Path stroke];
 }
 
 - (void)tagSelected:(id)sender
 {
+    NSLog(@"Tag > %@ has been selected", self);
+    
     [(AOTagList *)[self superview] removeTag:self];
 }
 
