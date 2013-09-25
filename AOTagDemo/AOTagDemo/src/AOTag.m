@@ -89,7 +89,7 @@
 
 - (void)addTag:(NSString *)tTitle withImage:(NSString *)tImage
 {
-    [self generateTagWithLabel:tTitle withImage:tImage];
+    [self generateTagWithLabel:(tTitle ? tTitle : @"") withImage:(tImage ? tImage : @"")];
     
     [self setNeedsDisplay];
 }
@@ -100,7 +100,7 @@ withLabelColor:(UIColor *)labelColor
 withBackgroundColor:(UIColor *)backgroundColor
 withCloseButtonColor:(UIColor *)closeColor
 {
-    AOTag *tag = [self generateTagWithLabel:tTitle withImage:tImage];
+    AOTag *tag = [self generateTagWithLabel:(tTitle ? tTitle : @"") withImage:(tImage ? tImage : @"")];
     
     if (labelColor) [tag setTLabelColor:labelColor];
     if (backgroundColor) [tag setTBackgroundColor:backgroundColor];
