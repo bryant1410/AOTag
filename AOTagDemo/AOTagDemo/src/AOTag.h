@@ -49,10 +49,9 @@
 @property (nonatomic, copy) NSString *tTitle;
 
 /**
- * Returns an NSString representation of the object's persistent store primary key
+ * Return a tag object size
  *
- * @param anObjectID the NSManagedObjectID instance to transform
- * @return an NSString
+ * @return return a tag object CGSize size
  */
 - (CGSize)getTagSize;
 
