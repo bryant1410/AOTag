@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F31D3E3917FAC0EC00979522 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3017FAC0EC00979522 /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F31D3E3A17FAC0EC00979522 /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3317FAC0EC00979522 /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F31D3E3B17FAC0EC00979522 /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3517FAC0EC00979522 /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F31D3E3C17FAC0EC00979522 /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3817FAC0EC00979522 /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F3C69A3117F1A78400222259 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C69A3017F1A78400222259 /* Foundation.framework */; };
 		F3C69A3317F1A78400222259 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C69A3217F1A78400222259 /* CoreGraphics.framework */; };
 		F3C69A3517F1A78400222259 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C69A3417F1A78400222259 /* UIKit.framework */; };
@@ -52,6 +56,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F31D3E2F17FAC0EC00979522 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
+		F31D3E3017FAC0EC00979522 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
+		F31D3E3217FAC0EC00979522 /* EGOImageLoadConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoadConnection.h; sourceTree = "<group>"; };
+		F31D3E3317FAC0EC00979522 /* EGOImageLoadConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoadConnection.m; sourceTree = "<group>"; };
+		F31D3E3417FAC0EC00979522 /* EGOImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoader.h; sourceTree = "<group>"; };
+		F31D3E3517FAC0EC00979522 /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoader.m; sourceTree = "<group>"; };
+		F31D3E3717FAC0EC00979522 /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
+		F31D3E3817FAC0EC00979522 /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
 		F3C69A2D17F1A78400222259 /* AOTagDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOTagDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C69A3017F1A78400222259 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F3C69A3217F1A78400222259 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -116,12 +128,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F31D3E1A17FAACBE00979522 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				F31D3E2E17FAC0EC00979522 /* EGOCache */,
+				F31D3E3117FAC0EC00979522 /* EGOImageLoader */,
+				F31D3E3617FAC0EC00979522 /* EGOImageView */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		F31D3E2E17FAC0EC00979522 /* EGOCache */ = {
+			isa = PBXGroup;
+			children = (
+				F31D3E2F17FAC0EC00979522 /* EGOCache.h */,
+				F31D3E3017FAC0EC00979522 /* EGOCache.m */,
+			);
+			name = EGOCache;
+			path = AOTagDemo/src/EGOImageLoading/EGOCache;
+			sourceTree = "<group>";
+		};
+		F31D3E3117FAC0EC00979522 /* EGOImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				F31D3E3217FAC0EC00979522 /* EGOImageLoadConnection.h */,
+				F31D3E3317FAC0EC00979522 /* EGOImageLoadConnection.m */,
+				F31D3E3417FAC0EC00979522 /* EGOImageLoader.h */,
+				F31D3E3517FAC0EC00979522 /* EGOImageLoader.m */,
+			);
+			name = EGOImageLoader;
+			path = AOTagDemo/src/EGOImageLoading/EGOImageLoader;
+			sourceTree = "<group>";
+		};
+		F31D3E3617FAC0EC00979522 /* EGOImageView */ = {
+			isa = PBXGroup;
+			children = (
+				F31D3E3717FAC0EC00979522 /* EGOImageView.h */,
+				F31D3E3817FAC0EC00979522 /* EGOImageView.m */,
+			);
+			name = EGOImageView;
+			path = AOTagDemo/src/EGOImageLoading/EGOImageView;
+			sourceTree = "<group>";
+		};
 		F3C69A2417F1A78400222259 = {
 			isa = PBXGroup;
 			children = (
 				F3F3F91017F2E4F400A1098D /* README.md */,
 				F3C69A3617F1A78400222259 /* AOTagDemo */,
 				F3C69A4F17F1A78500222259 /* AOTagDemoTests */,
+				F31D3E1A17FAACBE00979522 /* Vendor */,
 				F3C69A2F17F1A78400222259 /* Frameworks */,
 				F3C69A2E17F1A78400222259 /* Products */,
 			);
@@ -331,9 +386,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C69A6617F1ADE900222259 /* AOViewController.m in Sources */,
+				F31D3E3B17FAC0EC00979522 /* EGOImageLoader.m in Sources */,
+				F31D3E3C17FAC0EC00979522 /* EGOImageView.m in Sources */,
 				F3C69A4117F1A78500222259 /* AOAppDelegate.m in Sources */,
 				F3C69A6117F1A82800222259 /* AOTag.m in Sources */,
 				F3C69A3D17F1A78500222259 /* main.m in Sources */,
+				F31D3E3917FAC0EC00979522 /* EGOCache.m in Sources */,
+				F31D3E3A17FAC0EC00979522 /* EGOImageLoadConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
