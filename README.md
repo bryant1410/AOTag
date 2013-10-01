@@ -209,7 +209,7 @@ Sample project show a simple usage.
 	[self.view addSubview:self.tag];
 
 	// Then add new tag
-    [self.tag addTag:@"my tag title" withImageURL:[NSURL URLWithString:@""] andImagePlaceholder:[UIImage imageNamed:"myTagImage.png"]];
+    [self.tag addTag:@"my tag title" withImageURL:[NSURL URLWithString:@"http://myTagDistantURL"] andImagePlaceholder:[UIImage imageNamed:"myTagImage.png"]];
 }
     
 ```
