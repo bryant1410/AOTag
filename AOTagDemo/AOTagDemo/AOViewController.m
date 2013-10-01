@@ -97,6 +97,26 @@
     }
 }
 
+- (IBAction)addRandomTagWithDistantImage:(id)sender
+{
+    if ([self.randomTag count])
+    {
+        NSInteger index = [self getRandomTagIndex];
+        
+        [self.tag addTag:[[self.randomTag objectAtIndex:index] valueForKey:@"title"] withImageURL:[NSURL URLWithString:@""] andImagePlaceholder:[[self.randomTag objectAtIndex:index] valueForKey:@"image"]];
+        [self.randomTag removeObjectAtIndex:index];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Information"
+                                                        message:@"No more random data to be used !"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Reset"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
 - (IBAction)addCustomColorTag:(id)sender
 {
     NSArray *colors = @[[UIColor redColor], [UIColor orangeColor], [UIColor purpleColor], [UIColor greenColor], [UIColor yellowColor]];
@@ -107,6 +127,34 @@
         
         [self.tag addTag:[[self.randomTag objectAtIndex:index] valueForKey:@"title"]
                withImage:[[self.randomTag objectAtIndex:index] valueForKey:@"image"]
+          withLabelColor:[UIColor blackColor]
+     withBackgroundColor:[colors objectAtIndex:arc4random() % [colors count]]
+    withCloseButtonColor:[UIColor whiteColor]];
+        
+        [self.randomTag removeObjectAtIndex:index];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Information"
+                                                        message:@"No more random data to be used !"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Reset"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (IBAction)addCustomColorTagWithDistantImage:(id)sender
+{
+    NSArray *colors = @[[UIColor redColor], [UIColor orangeColor], [UIColor purpleColor], [UIColor greenColor], [UIColor yellowColor]];
+    
+    if ([self.randomTag count])
+    {
+        NSInteger index = [self getRandomTagIndex];
+        
+        [self.tag addTag:[[self.randomTag objectAtIndex:index] valueForKey:@"title"]
+               withImagePlaceholder:[[self.randomTag objectAtIndex:index] valueForKey:@"image"]
+            withImageURL:[NSURL URLWithString:@""]
           withLabelColor:[UIColor blackColor]
      withBackgroundColor:[colors objectAtIndex:arc4random() % [colors count]]
     withCloseButtonColor:[UIColor whiteColor]];
@@ -158,6 +206,18 @@
 - (void)tagDidSelectTag:(AOTag *)tag
 {
     NSLog(@"Tag > %@ has been selected", tag);
+}
+
+#pragma mark - Tag delegate
+
+- (void)tagDistantImageDidLoad:(AOTag *)tag
+{
+    NSLog(@"Distant image has been downloaded for tag > %@", tag);
+}
+
+- (void)tagDistantImageDidFailLoad:(AOTag *)tag withError:(NSError *)error
+{
+    NSLog(@"Distant image has failed to download > %@ for tag > %@", error, tag);
 }
 
 @end

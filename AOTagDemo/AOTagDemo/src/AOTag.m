@@ -95,6 +95,14 @@
     [self setNeedsDisplay];
 }
 
+- (void)addTag:(NSString *)tTitle withImageURL:(NSURL *)imageURL andImagePlaceholder:(NSString *)tPlaceholderImage
+{
+    AOTag *tag = [self generateTagWithLabel:(tTitle ? tTitle : @"") withImage:(tPlaceholderImage ? tPlaceholderImage : @"")];
+    [tag setTURL:imageURL];
+    
+    [self setNeedsDisplay];
+}
+
 - (void)addTag:(NSString *)tTitle
      withImage:(NSString *)tImage
 withLabelColor:(UIColor *)labelColor
@@ -102,6 +110,24 @@ withBackgroundColor:(UIColor *)backgroundColor
 withCloseButtonColor:(UIColor *)closeColor
 {
     AOTag *tag = [self generateTagWithLabel:(tTitle ? tTitle : @"") withImage:(tImage ? tImage : @"")];
+    
+    if (labelColor) [tag setTLabelColor:labelColor];
+    if (backgroundColor) [tag setTBackgroundColor:backgroundColor];
+    if (closeColor) [tag setTCloseButtonColor:closeColor];
+    
+    [self setNeedsDisplay];
+}
+
+- (void)addTag:(NSString *)tTitle
+withImagePlaceholder:(NSString *)tPlaceholderImage
+  withImageURL:(NSURL *)imageURL
+withLabelColor:(UIColor *)labelColor
+withBackgroundColor:(UIColor *)backgroundColor
+withCloseButtonColor:(UIColor *)closeColor
+{
+    AOTag *tag = [self generateTagWithLabel:(tTitle ? tTitle : @"") withImage:(tPlaceholderImage ? tPlaceholderImage : @"")];
+    
+    [tag setTURL:imageURL];
     
     if (labelColor) [tag setTLabelColor:labelColor];
     if (backgroundColor) [tag setTBackgroundColor:backgroundColor];
@@ -142,6 +168,8 @@ withCloseButtonColor:(UIColor *)closeColor
         self.tLabelColor = [UIColor whiteColor];
         self.tCloseButtonColor = [UIColor colorWithRed:0.710 green:0.867 blue:0.953 alpha:1.000];
         
+        self.tURL = nil;
+        
         [self setBackgroundColor:[UIColor clearColor]];
         [self setUserInteractionEnabled:YES];
         
@@ -165,7 +193,11 @@ withCloseButtonColor:(UIColor *)closeColor
     
     self.layer.backgroundColor = [self.tBackgroundColor CGColor];
     
-    [self.tImage drawInRect:CGRectMake(0.0f, 0.0f, [self getTagSize].height, [self getTagSize].height)];
+    self.tImageURL = [[EGOImageView alloc] initWithPlaceholderImage:self.tImage delegate:self];
+    [self.tImageURL setBackgroundColor:[UIColor purpleColor]];
+    [self.tImageURL setFrame:CGRectMake(0.0f, 0.0f, [self getTagSize].height, [self getTagSize].height)];
+    if (self.tURL) [self.tImageURL setImageURL:[self tURL]];
+    [self addSubview:self.tImageURL];
     
     CGSize tSize = [self.tTitle sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize]}];
     
@@ -197,6 +229,20 @@ withCloseButtonColor:(UIColor *)closeColor
         [self.delegate performSelector:@selector(tagDidRemoveTag:) withObject:self];
     
     [(AOTagList *)[self superview] removeTag:self];
+}
+
+#pragma mark - EGOImageView Delegate methods
+
+- (void)imageViewLoadedImage:(EGOImageView *)imageView
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tagDistantImageDidLoad:)])
+        [self.delegate performSelector:@selector(tagDistantImageDidLoad:) withObject:self];
+}
+
+- (void)imageViewFailedToLoadImage:(EGOImageView *)imageView error:(NSError*)error
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tagDistantImageDidFailLoad:withError:)])
+        [self.delegate performSelector:@selector(tagDistantImageDidFailLoad:withError:) withObject:self withObject:error];
 }
 
 @end
