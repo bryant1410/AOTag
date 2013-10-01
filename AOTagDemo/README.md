@@ -6,6 +6,10 @@ AOTag is under MIT Licence so if you find it helpful just use it !
 
 This project add/remove tag with image and title inside a tag list view. When user tap on a tag, it's removed from the view. Please see the sample project for more.
 
+The usage of distant tag image is supported by using EGOImageView module.
+
+https://github.com/enormego/EGOImageLoading.git
+
 ###**Screenshot:**
 AOTagDemo in the iphone simulator
 
