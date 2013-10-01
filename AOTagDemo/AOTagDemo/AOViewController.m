@@ -103,7 +103,7 @@
     {
         NSInteger index = [self getRandomTagIndex];
         
-        [self.tag addTag:[[self.randomTag objectAtIndex:index] valueForKey:@"title"] withImageURL:[NSURL URLWithString:@""] andImagePlaceholder:[[self.randomTag objectAtIndex:index] valueForKey:@"image"]];
+        [self.tag addTag:[[self.randomTag objectAtIndex:index] valueForKey:@"title"] withImageURL:[NSURL URLWithString:@"https://identicons.github.com/e45c2d792a22e0ebe8488d42f4dc22d5.png"] andImagePlaceholder:[[self.randomTag objectAtIndex:index] valueForKey:@"image"]];
         [self.randomTag removeObjectAtIndex:index];
     }
     else
@@ -154,7 +154,7 @@
         
         [self.tag addTag:[[self.randomTag objectAtIndex:index] valueForKey:@"title"]
                withImagePlaceholder:[[self.randomTag objectAtIndex:index] valueForKey:@"image"]
-            withImageURL:[NSURL URLWithString:@""]
+            withImageURL:[NSURL URLWithString:@"https://identicons.github.com/e45c2d792a22e0ebe8488d42f4dc22d5.png"]
           withLabelColor:[UIColor blackColor]
      withBackgroundColor:[colors objectAtIndex:arc4random() % [colors count]]
     withCloseButtonColor:[UIColor whiteColor]];
