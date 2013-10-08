@@ -11,6 +11,13 @@
 		F31D3E3A17FAC0EC00979522 /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3317FAC0EC00979522 /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F31D3E3B17FAC0EC00979522 /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3517FAC0EC00979522 /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F31D3E3C17FAC0EC00979522 /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3817FAC0EC00979522 /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F3C37803180438040050A32C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C69A3017F1A78400222259 /* Foundation.framework */; };
+		F3C37824180438380050A32C /* AOTag.m in Sources */ = {isa = PBXBuildFile; fileRef = F3C69A6017F1A82800222259 /* AOTag.m */; };
+		F3C37825180438380050A32C /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3017FAC0EC00979522 /* EGOCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F3C37826180438380050A32C /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3317FAC0EC00979522 /* EGOImageLoadConnection.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F3C37827180438380050A32C /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3517FAC0EC00979522 /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F3C37828180438380050A32C /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3817FAC0EC00979522 /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F3C37829180438510050A32C /* AOTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3C69A5F17F1A82800222259 /* AOTag.h */; };
 		F3C69A3117F1A78400222259 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C69A3017F1A78400222259 /* Foundation.framework */; };
 		F3C69A3317F1A78400222259 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C69A3217F1A78400222259 /* CoreGraphics.framework */; };
 		F3C69A3517F1A78400222259 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C69A3417F1A78400222259 /* UIKit.framework */; };
@@ -55,6 +62,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F3C37800180438040050A32C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				F3C37829180438510050A32C /* AOTag.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		F31D3E2F17FAC0EC00979522 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		F31D3E3017FAC0EC00979522 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
@@ -64,6 +84,7 @@
 		F31D3E3517FAC0EC00979522 /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoader.m; sourceTree = "<group>"; };
 		F31D3E3717FAC0EC00979522 /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
 		F31D3E3817FAC0EC00979522 /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
+		F3C37802180438040050A32C /* libAOTag.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAOTag.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C69A2D17F1A78400222259 /* AOTagDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOTagDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C69A3017F1A78400222259 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F3C69A3217F1A78400222259 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -105,6 +126,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F3C377FF180438040050A32C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3C37803180438040050A32C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3C69A2A17F1A78400222259 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -187,6 +216,7 @@
 			children = (
 				F3C69A2D17F1A78400222259 /* AOTagDemo.app */,
 				F3C69A4817F1A78500222259 /* AOTagDemoTests.xctest */,
+				F3C37802180438040050A32C /* libAOTag.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -274,6 +304,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F3C37801180438040050A32C /* AOTag */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3C37822180438050050A32C /* Build configuration list for PBXNativeTarget "AOTag" */;
+			buildPhases = (
+				F3C377FE180438040050A32C /* Sources */,
+				F3C377FF180438040050A32C /* Frameworks */,
+				F3C37800180438040050A32C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AOTag;
+			productName = AOTag;
+			productReference = F3C37802180438040050A32C /* libAOTag.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		F3C69A2C17F1A78400222259 /* AOTagDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3C69A5917F1A78500222259 /* Build configuration list for PBXNativeTarget "AOTagDemo" */;
@@ -338,6 +385,7 @@
 			targets = (
 				F3C69A2C17F1A78400222259 /* AOTagDemo */,
 				F3C69A4717F1A78500222259 /* AOTagDemoTests */,
+				F3C37801180438040050A32C /* AOTag */,
 			);
 		};
 /* End PBXProject section */
@@ -381,6 +429,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F3C377FE180438040050A32C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3C37824180438380050A32C /* AOTag.m in Sources */,
+				F3C37825180438380050A32C /* EGOCache.m in Sources */,
+				F3C37826180438380050A32C /* EGOImageLoadConnection.m in Sources */,
+				F3C37827180438380050A32C /* EGOImageLoader.m in Sources */,
+				F3C37828180438380050A32C /* EGOImageView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3C69A2917F1A78400222259 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -434,6 +494,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F3C3781E180438050050A32C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				DSTROOT = /tmp/AOTag.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AOTag/AOTag-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F3C3781F180438050050A32C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				DSTROOT = /tmp/AOTag.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AOTag/AOTag-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		F3C69A5717F1A78500222259 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -577,6 +667,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F3C37822180438050050A32C /* Build configuration list for PBXNativeTarget "AOTag" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3C3781E180438050050A32C /* Debug */,
+				F3C3781F180438050050A32C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F3C69A2817F1A78400222259 /* Build configuration list for PBXProject "AOTagDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

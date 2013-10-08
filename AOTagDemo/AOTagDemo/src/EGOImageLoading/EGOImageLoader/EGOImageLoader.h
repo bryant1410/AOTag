@@ -25,6 +25,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #ifndef __EGOIL_USE_BLOCKS
 #define __EGOIL_USE_BLOCKS 0
