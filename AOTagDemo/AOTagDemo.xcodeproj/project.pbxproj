@@ -18,6 +18,7 @@
 		F3C37827180438380050A32C /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3517FAC0EC00979522 /* EGOImageLoader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F3C37828180438380050A32C /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F31D3E3817FAC0EC00979522 /* EGOImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F3C37829180438510050A32C /* AOTag.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F3C69A5F17F1A82800222259 /* AOTag.h */; };
+		F3C3782B18043B140050A32C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F3C3782A18043B140050A32C /* README.md */; };
 		F3C69A3117F1A78400222259 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C69A3017F1A78400222259 /* Foundation.framework */; };
 		F3C69A3317F1A78400222259 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C69A3217F1A78400222259 /* CoreGraphics.framework */; };
 		F3C69A3517F1A78400222259 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C69A3417F1A78400222259 /* UIKit.framework */; };
@@ -49,7 +50,6 @@
 		F3C69A9917F1BA0900222259 /* sansa@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3C69A8917F1BA0900222259 /* sansa@2x.jpg */; };
 		F3C69A9A17F1BA0900222259 /* tyrion.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3C69A8A17F1BA0900222259 /* tyrion.jpg */; };
 		F3C69A9B17F1BA0900222259 /* tyrion@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F3C69A8B17F1BA0900222259 /* tyrion@2x.jpg */; };
-		F3F3F91117F2E4F400A1098D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F3F3F91017F2E4F400A1098D /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +85,7 @@
 		F31D3E3717FAC0EC00979522 /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
 		F31D3E3817FAC0EC00979522 /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
 		F3C37802180438040050A32C /* libAOTag.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAOTag.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3C3782A18043B140050A32C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F3C69A2D17F1A78400222259 /* AOTagDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOTagDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C69A3017F1A78400222259 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F3C69A3217F1A78400222259 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,7 +123,6 @@
 		F3C69A8917F1BA0900222259 /* sansa@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sansa@2x.jpg"; sourceTree = "<group>"; };
 		F3C69A8A17F1BA0900222259 /* tyrion.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tyrion.jpg; sourceTree = "<group>"; };
 		F3C69A8B17F1BA0900222259 /* tyrion@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tyrion@2x.jpg"; sourceTree = "<group>"; };
-		F3F3F91017F2E4F400A1098D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,7 +202,7 @@
 		F3C69A2417F1A78400222259 = {
 			isa = PBXGroup;
 			children = (
-				F3F3F91017F2E4F400A1098D /* README.md */,
+				F3C3782A18043B140050A32C /* README.md */,
 				F3C69A3617F1A78400222259 /* AOTagDemo */,
 				F31D3E1A17FAACBE00979522 /* Vendor */,
 				F3C69A4F17F1A78500222259 /* AOTagDemoTests */,
@@ -397,7 +397,7 @@
 			files = (
 				F3C69A9117F1BA0900222259 /* cersei@2x.jpg in Resources */,
 				F3C69A9917F1BA0900222259 /* sansa@2x.jpg in Resources */,
-				F3F3F91117F2E4F400A1098D /* README.md in Resources */,
+				F3C3782B18043B140050A32C /* README.md in Resources */,
 				F3C69A9B17F1BA0900222259 /* tyrion@2x.jpg in Resources */,
 				F3C69A8C17F1BA0900222259 /* arya.jpg in Resources */,
 				F3C69A8F17F1BA0900222259 /* catherine@2x.jpg in Resources */,
@@ -674,6 +674,7 @@
 				F3C3781F180438050050A32C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F3C69A2817F1A78400222259 /* Build configuration list for PBXProject "AOTagDemo" */ = {
 			isa = XCConfigurationList;
