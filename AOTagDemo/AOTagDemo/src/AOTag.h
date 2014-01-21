@@ -123,6 +123,9 @@
 
 @property (nonatomic, weak) id <AOTagDelegate> delegate;
 
+@property (nonatomic, strong) NSNumber *tFontSize;
+@property (nonatomic, strong) NSString *tFontName;
+
 @property (nonatomic, strong) UIColor *tLabelColor;
 @property (nonatomic, strong) UIColor *tBackgroundColor;
 @property (nonatomic, strong) UIColor *tCloseButtonColor;

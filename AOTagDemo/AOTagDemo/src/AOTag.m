@@ -168,6 +168,9 @@ withCloseButtonColor:(UIColor *)closeColor
         self.tLabelColor = [UIColor whiteColor];
         self.tCloseButtonColor = [UIColor colorWithRed:0.710 green:0.867 blue:0.953 alpha:1.000];
         
+        self.tFontSize = [NSNumber numberWithFloat:tagFontSize];
+        self.tFontName = tagFontType;
+        
         self.tURL = nil;
         
         [self setBackgroundColor:[UIColor clearColor]];
@@ -182,7 +185,7 @@ withCloseButtonColor:(UIColor *)closeColor
 
 - (CGSize)getTagSize
 {
-    CGSize tSize = ([self.tTitle respondsToSelector:@selector(sizeWithAttributes:)] ? [self.tTitle sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize]}] : [self.tTitle sizeWithFont:[UIFont fontWithName:tagFontType size:tagFontSize]]);
+    CGSize tSize = ([self.tTitle respondsToSelector:@selector(sizeWithAttributes:)] ? [self.tTitle sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:self.tFontName size:[self.tFontSize floatValue]]}] : [self.tTitle sizeWithFont:[UIFont fontWithName:self.tFontName size:[self.tFontSize floatValue]]]);
     
     return CGSizeMake(tagHeight + tagMargin + tSize.width + tagMargin + tagCloseButton + tagMargin, tagHeight);
 }
@@ -202,13 +205,13 @@ withCloseButtonColor:(UIColor *)closeColor
     if ([self.tTitle respondsToSelector:@selector(drawAtPoint:withAttributes:)])
     {
         [self.tTitle drawInRect:CGRectMake(tagHeight + tagMargin, ([self getTagSize].height / 2.0f) - ([self getTagSize].height / 2.0f), [self getTagSize].width, [self getTagSize].height)
-             withAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize], NSForegroundColorAttributeName:self.tLabelColor}];
+             withAttributes:@{NSFontAttributeName:[UIFont fontWithName:self.tFontName size:[self.tFontSize floatValue]], NSForegroundColorAttributeName:self.tLabelColor}];
     }
     else
     {
         [self.tLabelColor set];
         [self.tTitle drawInRect:CGRectMake(tagHeight + tagMargin, ([self getTagSize].height / 2.0f) - ([self getTagSize].height / 2.0f), [self getTagSize].width, [self getTagSize].height)
-                       withFont:[UIFont fontWithName:tagFontType size:tagFontSize] lineBreakMode:NSLineBreakByWordWrapping];
+                       withFont:[UIFont fontWithName:self.tFontName size:[self.tFontSize floatValue]] lineBreakMode:NSLineBreakByWordWrapping];
     }
     
     AOTagCloseButton *close = [[AOTagCloseButton alloc] initWithFrame:CGRectMake([self getTagSize].width - tagHeight, 0.0, tagHeight, tagHeight)
