@@ -46,6 +46,14 @@
 
 @property (nonatomic, strong) NSMutableArray *tags;
 
+/**
+ * Define tag font name and font size.
+ *
+ * @param name the NSString font name. Default is @"Helvetica-Light".
+ * @param size the NSString font size. Default is 12.0f.
+ */
+- (void)setTagFont:(NSString *)name withSize:(CGFloat)size;
+
 /**************************
  * Methods to load tags with bundle images
  **************************/

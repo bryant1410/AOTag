@@ -32,6 +32,13 @@
 #define tagCornerRadius     3.0f
 #define tagCloseButton      7.0f
 
+@interface AOTagList ()
+
+@property (nonatomic, strong) NSNumber *tFontSize;
+@property (nonatomic, strong) NSString *tFontName;
+
+@end
+
 @implementation AOTagList
 
 - (id)initWithFrame:(CGRect)frame
@@ -43,6 +50,9 @@
         [self setUserInteractionEnabled:YES];
         
         self.tags = [NSMutableArray array];
+        
+        self.tFontSize = [NSNumber numberWithFloat:tagFontSize];
+        self.tFontName = tagFontType;
     }
     return self;
 }
@@ -75,9 +85,18 @@
     [self setFrame:r];
 }
 
+- (void)setTagFont:(NSString *)name withSize:(CGFloat)size
+{
+    [self setTFontSize:[NSNumber numberWithFloat:size]];
+    [self setTFontName:name];
+}
+
 - (AOTag *)generateTagWithLabel:(NSString *)tTitle withImage:(NSString *)tImage
 {
     AOTag *tag = [[AOTag alloc] initWithFrame:CGRectZero];
+    
+    [tag setTFontName:self.tFontName];
+    [tag setTFontSize:self.tFontSize];
     
     [tag setDelegate:self.delegate];
     [tag setTImage:[UIImage imageNamed:tImage]];

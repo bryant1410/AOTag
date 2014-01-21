@@ -40,6 +40,14 @@ Sample project show a simple usage.
 
 @end
 
+/**
+ * Define tag font name and font size.
+ *
+ * @param name the NSString font name. Default is @"Helvetica-Light".
+ * @param size the NSString font size. Default is 12.0f.
+ */
+- (void)setTagFont:(NSString *)name withSize:(CGFloat)size;
+
 /**************************
  * Methods to load tags with bundle images
  **************************/
@@ -127,7 +135,10 @@ Sample project show a simple usage.
                                                            320.0f,
                                                            300.0f)];
     
-	[self.view addSubview:self.tag];
+	// You can change tag font name and font size
+    [self.tag setTagFont:@"Helvetica-Light" withSize:12.0f];
+
+    [self.view addSubview:self.tag];
 
 	// Then add new tag
 	[self.tag addTag:@"my tag title" withImage:@"myTagImage.png"];

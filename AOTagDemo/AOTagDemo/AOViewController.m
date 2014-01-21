@@ -55,6 +55,7 @@
                                                            320.0f,
                                                            300.0f)];
     
+    [self.tag setTagFont:@"Helvetica-Light" withSize:12.0f];
     [self.tag setDelegate:self];
     [self.view addSubview:self.tag];
 }
