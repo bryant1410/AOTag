@@ -199,10 +199,17 @@ withCloseButtonColor:(UIColor *)closeColor
     if (self.tURL) [self.tImageURL setImageURL:[self tURL]];
     [self addSubview:self.tImageURL];
     
-    CGSize tSize = [self getTagSize];
-    
-    [self.tTitle drawInRect:CGRectMake(tagHeight + tagMargin, ([self getTagSize].height / 2.0f) - (tSize.height / 2.0f), tSize.width, tSize.height)
+    if ([self.tTitle respondsToSelector:@selector(drawAtPoint:withAttributes:)])
+    {
+        [self.tTitle drawInRect:CGRectMake(tagHeight + tagMargin, ([self getTagSize].height / 2.0f) - ([self getTagSize].height / 2.0f), [self getTagSize].width, [self getTagSize].height)
              withAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize], NSForegroundColorAttributeName:self.tLabelColor}];
+    }
+    else
+    {
+        [self.tLabelColor set];
+        [self.tTitle drawInRect:CGRectMake(tagHeight + tagMargin, ([self getTagSize].height / 2.0f) - ([self getTagSize].height / 2.0f), [self getTagSize].width, [self getTagSize].height)
+                       withFont:[UIFont fontWithName:tagFontType size:tagFontSize] lineBreakMode:NSLineBreakByWordWrapping];
+    }
     
     AOTagCloseButton *close = [[AOTagCloseButton alloc] initWithFrame:CGRectMake([self getTagSize].width - tagHeight, 0.0, tagHeight, tagHeight)
                                                             withColor:self.tCloseButtonColor];
