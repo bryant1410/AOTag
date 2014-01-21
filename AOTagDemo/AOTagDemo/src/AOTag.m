@@ -182,7 +182,7 @@ withCloseButtonColor:(UIColor *)closeColor
 
 - (CGSize)getTagSize
 {
-    CGSize tSize = [self.tTitle sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize]}];
+    CGSize tSize = ([self.tTitle respondsToSelector:@selector(sizeWithAttributes:)] ? [self.tTitle sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize]}] : [self.tTitle sizeWithFont:[UIFont fontWithName:tagFontType size:tagFontSize]]);
     
     return CGSizeMake(tagHeight + tagMargin + tSize.width + tagMargin + tagCloseButton + tagMargin, tagHeight);
 }
@@ -199,7 +199,7 @@ withCloseButtonColor:(UIColor *)closeColor
     if (self.tURL) [self.tImageURL setImageURL:[self tURL]];
     [self addSubview:self.tImageURL];
     
-    CGSize tSize = [self.tTitle sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize]}];
+    CGSize tSize = [self getTagSize];
     
     [self.tTitle drawInRect:CGRectMake(tagHeight + tagMargin, ([self getTagSize].height / 2.0f) - (tSize.height / 2.0f), tSize.width, tSize.height)
              withAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize], NSForegroundColorAttributeName:self.tLabelColor}];
