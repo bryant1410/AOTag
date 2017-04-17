@@ -1,8 +1,8 @@
-#AOTag - simple tag implementation
+# AOTag - simple tag implementation
 
 AOTag is under MIT Licence so if you find it helpful just use it !
 
-###**AOTagDemo**
+### **AOTagDemo**
 
 This project add/remove tag with image and title inside a tag list view. When user tap on a tag, it's removed from the view. Please see the sample project for more.
 
@@ -10,16 +10,16 @@ The usage of distant tag image is supported by using EGOImageView module.
 
 https://github.com/enormego/EGOImageLoading.git
 
-###**Screenshot:**
+### **Screenshot:**
 AOTagDemo in the iphone simulator
 
 ![AOTagDemo in the simulator][1]
 
-##How To Use It
+## How To Use It
 
 Sample project show a simple usage.
 
-###Documentation
+### Documentation
 
 ```objc
 
@@ -121,7 +121,7 @@ Sample project show a simple usage.
     
 ```
 
-###Code snippet
+### Code snippet
 
 ```objc
 // First add the tag container view in your view controller
